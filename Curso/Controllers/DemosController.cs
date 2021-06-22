@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 namespace Curso.Controllers {
     public class DemosController : Controller {
         public IActionResult Index() {
-            return this.Content("Hola mundo");
+            this.ViewData["msg"] = "Hola mundo";
+            this.ViewData["cuantos"] = 5;
+            return this.View();
+            //return this.Content("Hola mundo");
         }
         public IActionResult Saluda(string id) {
             return this.Content("Hola " + id);

@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    this.Layout = null;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Demos</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <h1>Ejemplo de página completa</h1>
+    <p>
+        @this.ViewData["msg"]
+    </p>
+    <ol>
+        @for (var i = 0; i < (int)this.ViewData["cuantos"]; i++) {
+            if (i % 2 == 0) {
+                <li class="error">@(this.ViewData["msg"] + " " + (i + 1))</li>
+            } else {
+                <li>@(this.ViewData["msg"] + " " + (i+1))</li>
+            }
+        }
+    </ol>
+    <p>Hoy es @DateTime.Now.ToString("dd/MMM/yy")</p>
+    <form >
+
+        <input type="button" value="Normal">
+        <input type="button" class="btn btn-primary" value="Con estilo">
+        <input type="button" class="btn btn-link" value="Falso enlace">
+        <input type="hidden" name="idUsuario" value="11" />
+        <p>
+            <label>Nombre</label>
+            <input name="text" type="text" value="Normal">
+            <label>Contraseña</label>
+            <input name="password" type="password" value="Normal">
+            Culpable: <input name="checkbox" type="checkbox" value="Normal">
+            <input name="opciones" type="radio" value="Normal">Op1
+            <input name="opciones" type="radio" value="Alto">Op2
+            <input name="date" type="date">
+            <textarea name="textarea" rows="3">
+Valor
+</textarea>
+            <select name="combo">
+                <option value="1">uno</option>
+                <option value="2">dos</option>
+                <option value="3">tres</option>
+            </select>
+            <select name="listbox" size="3">
+                <option value="1">uno</option>
+                <option value="2">dos</option>
+                <option value="3">tres</option>
+            </select>
+        </p>
+        <input type="submit" value="Enviar" >
+    </form>
+</body>
+</html>

@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00A0DC93-E6E9-44F9-9504-6549B8D51046}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>kk</RootNamespace>
+    <AssemblyName>kk</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="CodeTemplates\Address.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\AW.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AW.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\AW.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\AW.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AW.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\Cliente.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\CustomerAddress.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\NombreDetalle.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\Product.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\ProductCategory.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\ProductDescription.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\ProductModel.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\ProductModelProductDescription.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\SalesOrderDetail.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeTemplates\SalesOrderHeader.cs">
+      <DependentUpon>AW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NombreDetalle.partial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="CodeTemplates\AW.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AW.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CodeTemplates\AW.edmx.diagram">
+      <DependentUpon>AW.edmx</DependentUpon>
+    </None>
+    <None Include="CodeTemplates\EFModelFromDatabase\Context.cs.t4" />
+    <None Include="CodeTemplates\EFModelFromDatabase\EntityType.cs.t4" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CodeTemplates\AW.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AW.edmx</DependentUpon>
+      <LastGenOutput>AW.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CodeTemplates\AW.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AW.edmx</DependentUpon>
+      <LastGenOutput>AW.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
