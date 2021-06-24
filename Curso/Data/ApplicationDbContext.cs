@@ -10,6 +10,5 @@ namespace Curso.Data {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) {
         }
-        public DbSet<Curso.Models.Contacto> Contacto { get; set; }
     }
 }

@@ -1,0 +1,18 @@
+﻿@model Curso.Domains.Entities.Contacto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Contacto</h4>
+    <p>
+        @Html.DisplayFor(model => model.Tratamiento) @Html.DisplayFor(model => model.Nombre) @Html.DisplayFor(model => model.Apellidos)<br />
+        @Html.DisplayFor(model => model.Correo)
+    </p>
+ </div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

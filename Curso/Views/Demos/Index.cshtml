@@ -19,14 +19,14 @@
     <ol>
         @for (var i = 0; i < (int)this.ViewData["cuantos"]; i++) {
             if (i % 2 == 0) {
-                <li class="error">@(this.ViewData["msg"] + " " + (i + 1))</li>
+                <li class="error">@(this.ViewBag.msg + " " + (i + 1))</li>
             } else {
                 <li>@(this.ViewData["msg"] + " " + (i+1))</li>
             }
         }
     </ol>
     <p>Hoy es @DateTime.Now.ToString("dd/MMM/yy")</p>
-    <form >
+    <form>
 
         <input type="button" value="Normal">
         <input type="button" class="btn btn-primary" value="Con estilo">
@@ -55,7 +55,12 @@ Valor
                 <option value="3">tres</option>
             </select>
         </p>
-        <input type="submit" value="Enviar" >
+        <input type="submit" value="Enviar">
     </form>
+    <partial controller="Contacto" action="DetailsPartial" />
+    <environment include="Development">
+        <p>Estoy desarrollando</p>
+    </environment>
+
 </body>
 </html>

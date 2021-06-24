@@ -18,6 +18,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Curso.Domains.Contracts\Curso.Domains.Contracts.csproj" />
+    <ProjectReference Include="..\Curso.Domains.Entities\Curso.Domains.Entities.csproj" />
+    <ProjectReference Include="..\Curso.Domains\Curso.Domains.csproj" />
+    <ProjectReference Include="..\Curso.Infraestructure.Data\Curso.Infraestructure.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="CodeTemplates\EFModelFromDatabase\Context.cs.t4">
       <Generator></Generator>
     </None>

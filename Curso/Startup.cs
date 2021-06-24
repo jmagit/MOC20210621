@@ -12,6 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Curso.Domains.Contracts;
+using Curso.Domains.Services;
+using Curso.Infraestructure.Data.Repositories;
 
 namespace Curso {
     public class Startup {
@@ -27,7 +30,12 @@ namespace Curso {
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-
+            services.AddDbContext<Curso.Infraestructure.Data.UoW.ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IContactoRepository, ContactoRepository>();
+            //services.AddTransient<IContactoRepository, ContactoMockRepository>();
+            services.AddTransient<IContactoService, ContactoService>();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
@@ -52,6 +60,14 @@ namespace Curso {
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute(
+                    name: "saludo",
+                    pattern: "saluda/{id:alpha}/{que}/{hago}",
+                    defaults: new { controller = "Demos", action = "Cortes" });
+                endpoints.MapControllerRoute(
+                    name: "saludo2",
+                    pattern: "saluda/{id:int}/{hago}/{que}",
+                    defaults: new { controller = "Demos", action = "Cortes" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
