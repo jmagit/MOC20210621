@@ -8,8 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Curso.Domains.Entities;
 using Curso.Infraestructure.Data.UoW;
 using Curso.Domains.Contracts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Curso.Controllers {
+    [Authorize(Roles = "Admin")]
     public class ContactosController : Controller {
         private readonly IContactoService srv;
 

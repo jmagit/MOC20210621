@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Demo AJAX";
+}
+
+<h1>AJAX</h1>
+<p>
+    <button onclick="carga(0)">1</button>
+    <button onclick="carga(1)">2</button>
+    <button onclick="carga(2)">3</button>
+    <button onclick="carga(3)">4</button>
+</p>
+<div id="paginas">
+
+</div>
+<div id="result">
+
+</div>
+@section Scripts {
+    <script>
+        function carga(page) {
+            $.ajax({
+                type: "GET",
+                url: "/api/contactos?page=" + page,
+                success: function (data) {
+                    let lst = '<ul>';
+                    data.forEach(v => {
+                        lst += '<li>' + v.nombre + ' ' + v.apellidos + '</li>';
+                    })
+                    lst += '</ul>';
+                    result
+                    $('#result').html(lst)
+                }
+            });
+        }
+
+        $.ajax({
+            type: "GET",
+            url: "/api/contactos/count",
+            success: function (data) {
+                let lst = '';
+                for (let i = 0; i < data / 10; i++) {
+                    lst += '<button onclick="carga(' + i + ')">' + (i + 1) + '</button>';
+                }
+                $('#paginas').html(lst);
+                carga(0);
+            }
+        });
+
+    </script>
+}
+

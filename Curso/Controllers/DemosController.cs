@@ -1,5 +1,6 @@
 ﻿using Curso.Domains.Services;
 using Curso.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -42,5 +43,11 @@ namespace Curso.Controllers {
         public IActionResult dame(string id) {
             return this.Content($"tengo {memo}");
         }
+
+        [Authorize]
+        public IActionResult Ajax() {
+             return View();
+        }
+
     }
 }

@@ -10,7 +10,7 @@ using Curso.Infraestructure.Data.UoW;
 
 namespace Curso.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/contactos")]
     [ApiController]
     public class ContactosApiController : ControllerBase
     {
@@ -23,9 +23,13 @@ namespace Curso.Controllers
 
         // GET: api/ContactosApi
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Contacto>>> GetContacto()
+        public async Task<ActionResult<IEnumerable<Contacto>>> GetContacto(int page=0, int rows=10)
         {
-            return await _context.Contacto.ToListAsync();
+            return await _context.Contacto.Skip(page*rows).Take(rows).ToListAsync();
+        }
+        [HttpGet("count")]
+        public ActionResult<int> GetCount() {
+            return _context.Contacto.Count();
         }
 
         // GET: api/ContactosApi/5
